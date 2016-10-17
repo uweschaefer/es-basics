@@ -32,7 +32,6 @@ public class FooBank4Tests {
     @Test(expected = AccountUnknownException.class)
     public void transferToUnknown() {
         UUID uweId = facade.createAccount("uwe", "schaefer");
-        UUID andreasId = facade.createAccount("andreas", "heyder");
 
         facade.deposit(uweId, 10000);
         facade.transfer(uweId, UUID.randomUUID(), 1000);
