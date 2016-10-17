@@ -46,10 +46,9 @@ public class FooBank7Tests {
         Collection<String> reportNotYetReady = gold.createGoldCustomerReport();
         assertTrue(reportNotYetReady.isEmpty());
 
-        // eventually (:D) the report has to catch up
-
+        // don't do this at home
         try {
-            // don't do this at home
+            // eventually (:D) the report has to catch up
             Thread.sleep(2000);
         } catch (InterruptedException e) {
         }
@@ -58,7 +57,7 @@ public class FooBank7Tests {
 
         assertEquals(2, reportUpToDate.size());
         assertTrue(reportUpToDate.contains("adler, joerg"));
-        assertTrue(reportUpToDate.contains("blum, thorsten"));
+        assertTrue(reportUpToDate.contains("blum, torsten"));
 
     }
 
