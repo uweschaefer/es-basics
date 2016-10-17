@@ -49,11 +49,12 @@ public class FooBank7Tests {
         assertTrue(reportNotYetReady.isEmpty());
 
         // don't do this at home
-        try {
-            // eventually (:D) the report has to catch up
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-        }
+        while (gold.createGoldCustomerReport().size() < 2)
+            try {
+                // eventually (:D) the report has to catch up
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+            }
 
         Collection<String> reportUpToDate = gold.createGoldCustomerReport();
 
