@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import com.mercateo.edu.foobank.entity.Account;
 import com.mercateo.edu.foobank.evt.AccountCreatedEvent;
+import com.mercateo.edu.foobank.evt.DepositedEvent;
+import com.mercateo.edu.foobank.evt.WithdrawnEvent;
 import com.mercateo.edu.infra.evt.EventStore;
 import com.mercateo.edu.infra.view.PullView;
 
@@ -24,6 +26,13 @@ public class AccountView extends PullView {
         this.account = new Account(evt.getAggregateId(), evt.getFirstName(), evt.getLastName(), 0);
     }
 
-    // TODO add @EventConsumer annotated methods here, to also handle different
-    // Events
+    @EventConsumer
+    public void handle(DepositedEvent evt) {
+        this.account.credit(evt.getAmount());
+    }
+
+    @EventConsumer
+    public void handle(WithdrawnEvent evt) {
+        this.account.debit(evt.getAmount());
+    }
 }

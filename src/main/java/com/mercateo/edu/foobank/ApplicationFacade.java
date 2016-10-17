@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mercateo.edu.foobank.cmd.CreateAccountCommand;
+import com.mercateo.edu.foobank.cmd.DepositCommand;
+import com.mercateo.edu.foobank.cmd.WithdrawCommand;
 import com.mercateo.edu.infra.cmd.CommandBus;
 
 import lombok.RequiredArgsConstructor;
@@ -23,11 +25,11 @@ public class ApplicationFacade {
     }
 
     public void deposit(UUID id, int amount) {
-        // TODO
+        bus.post(new DepositCommand(id, amount));
     }
 
     public void withdraw(UUID id, int amount) {
-        // TODO
+        bus.post(new WithdrawCommand(id, amount));
     }
 
 }
