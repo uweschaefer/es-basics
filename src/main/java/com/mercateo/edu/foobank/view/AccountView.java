@@ -6,6 +6,8 @@ import com.mercateo.edu.foobank.entity.Account;
 import com.mercateo.edu.foobank.evt.AccountCreatedEvent;
 import com.mercateo.edu.foobank.evt.DepositedEvent;
 import com.mercateo.edu.foobank.evt.WithdrawnEvent;
+import com.mercateo.edu.foobank.evt.transfer.TransferReceivedEvent;
+import com.mercateo.edu.foobank.evt.transfer.TransferSentEvent;
 import com.mercateo.edu.infra.evt.EventStore;
 import com.mercateo.edu.infra.view.PullView;
 
@@ -35,4 +37,15 @@ public class AccountView extends PullView {
     public void handle(WithdrawnEvent evt) {
         this.account.debit(evt.getAmount());
     }
+
+    @EventConsumer
+    public void handle(TransferReceivedEvent evt) {
+        this.account.credit(evt.getAmount());
+    }
+
+    @EventConsumer
+    public void handle(TransferSentEvent evt) {
+        this.account.debit(evt.getAmount());
+    }
+
 }
