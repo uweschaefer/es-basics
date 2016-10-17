@@ -1,4 +1,4 @@
-package com.mercateo.edu.foobank.report;
+package com.mercateo.edu.foobank.view;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -13,6 +13,7 @@ public class ValuedCustomerReportView extends PullView {
 
     public ValuedCustomerReportView(EventStore es) {
         super(es);
+        pullEvents();
     }
 
     // define appropriate Datamodel for aggregation, just a suggestion:
@@ -28,7 +29,7 @@ public class ValuedCustomerReportView extends PullView {
     }
 
     public final boolean isValuedCustomer(UUID accountId) {
-        return this.valuedCustomers.contains(accountId);
+        return getValuedCustomers().contains(accountId);
     }
 
 }

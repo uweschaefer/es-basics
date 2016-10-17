@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.mercateo.edu.foobank.report.ValuedCustomerReportView;
+import com.mercateo.edu.foobank.view.ValuedCustomerReportView;
 import com.mercateo.edu.infra.EventsourcingInfraConfiguration;
 import com.mercateo.edu.infra.evt.EventStore;
 
