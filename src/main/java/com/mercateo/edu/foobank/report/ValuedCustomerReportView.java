@@ -6,8 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import org.assertj.core.util.Sets;
-
 import com.mercateo.edu.infra.evt.EventStore;
 import com.mercateo.edu.infra.view.PullView;
 
@@ -18,7 +16,7 @@ public class ValuedCustomerReportView extends PullView {
     }
 
     // define appropriate Datamodel for aggregation, just a suggestion:
-    final Set<UUID> candidates = Sets.newHashSet();
+    final Set<UUID> candidates = new HashSet<>();
 
     final Set<UUID> valuedCustomers = new HashSet<>();
 
