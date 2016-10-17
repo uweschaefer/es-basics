@@ -1,9 +1,9 @@
 package com.mercateo.edu.foobank.view;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import org.assertj.core.util.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,7 @@ public class KnownAccountsView extends PullView {
         super(es);
     }
 
-    final Set<UUID> knownAccounts = Sets.newHashSet();
+    final Set<UUID> knownAccounts = new HashSet<>();
 
     @EventConsumer
     public void handle(AccountCreatedEvent evt) {

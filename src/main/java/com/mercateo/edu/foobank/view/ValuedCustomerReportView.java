@@ -2,10 +2,9 @@ package com.mercateo.edu.foobank.view;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
-import org.assertj.core.util.Sets;
 
 import com.mercateo.edu.foobank.evt.DepositedEvent;
 import com.mercateo.edu.infra.evt.EventStore;
@@ -17,9 +16,9 @@ public class ValuedCustomerReportView extends PullView {
         super(es);
     }
 
-    final Set<UUID> candidates = Sets.newHashSet();
+    final Set<UUID> candidates = new HashSet<>();
 
-    final Set<UUID> valuedCustomers = Sets.newHashSet();
+    final Set<UUID> valuedCustomers = new HashSet<>();
 
     @EventConsumer
     public void apply(DepositedEvent evt) {
