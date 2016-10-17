@@ -307,9 +307,9 @@ git clone https://github.com/uweschaefer/es-basics.git
 --
 ### Session 1
 1. Implement **ApplicationFacade.deposit/withdraw**
-1. Create **Command classes** for both UseCases (see CreateAccountCommand)
-1. Create **CommandHandlers** for both UseCases (see CreateAccountHandler)
-1. Create **Event** classes for every UseCase (see AccountCreatedEvent)
+1. Create **Command classes** for both UseCases (see *CreateAccountCommand*)
+1. Create **CommandHandlers** for both UseCases (see *CreateAccountHandler*)
+1. Create **Event** classes for every UseCase (see *AccountCreatedEvent*)
 1. Extend **AccountView** to aggregate Accounts 
 1. Pass the Tests
 
@@ -383,7 +383,7 @@ Iterate Accounts and inspect their Depositions one by one.
 ### Session 2
 
 1. git clean -fd && git reset --hard session2
-1. implement ValuedCustomerReport
+1. implement ValuedCustomerReportView
 1. pass the Tests
 
 
@@ -391,7 +391,7 @@ Iterate Accounts and inspect their Depositions one by one.
 
 ### What just happened?
 
-* Dedicated Read / Query Model
+* we added a dedicated Read/Query-Model
  * beyond aggregate boundaries 
  * Query-optimized Datastructure
  * PullViews have to actually **pull** the events from the ES at some point.
@@ -693,7 +693,7 @@ Up to now, all views have been *PullView*s, that call *pullEvents()* to stream e
 ### Con
 
 * we have to Query the EventStore in order to know, if View's State is stale
- * the more Queries we run, the more catastropic this is
+ * the more Queries we run, the more catastrophic this is:
  * bad Latency for Queries
  * high Contention on EventStore
 
@@ -721,7 +721,7 @@ Up to now, all views have been *PullView*s, that call *pullEvents()* to stream e
 * report must be **instant!** (low-latency) 
 * report must be a collection of Strings "&lt;LASTNAME&gt;, &lt;FIRSTNAME&gt;"
 * order is not important 
-* only Transfers count – Depositions **must** not be examined
+* only Transfers count – Depositions **must not** be examined
 * report does not need to include GoldCustomer that recieved the status in the last few seconds...
 
 --
