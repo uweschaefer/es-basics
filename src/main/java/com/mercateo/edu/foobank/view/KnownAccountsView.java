@@ -1,10 +1,13 @@
 package com.mercateo.edu.foobank.view;
 
+import java.util.Set;
 import java.util.UUID;
 
+import org.assertj.core.util.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.mercateo.edu.foobank.evt.AccountCreatedEvent;
 import com.mercateo.edu.infra.evt.EventStore;
 import com.mercateo.edu.infra.view.PullView;
 
@@ -16,10 +19,15 @@ public class KnownAccountsView extends PullView {
         super(es);
     }
 
-    // TODO add datastructure
-    // TODO consume Events
+    final Set<UUID> knownAccounts = Sets.newHashSet();
+
+    @EventConsumer
+    public void handle(AccountCreatedEvent evt) {
+        knownAccounts.add(evt.getAggregateId());
+    }
 
     public boolean exists(UUID id) {
-        return false; // TODO
+        pullEvents();
+        return knownAccounts.contains(id);
     }
 }
