@@ -13,7 +13,6 @@ public class ValuedCustomerReportView extends PullView {
 
     public ValuedCustomerReportView(EventStore es) {
         super(es);
-        pullEvents();
     }
 
     // define appropriate Datamodel for aggregation, just a suggestion:

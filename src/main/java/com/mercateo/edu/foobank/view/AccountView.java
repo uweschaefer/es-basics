@@ -18,7 +18,7 @@ public class AccountView extends PullView {
 
     public AccountView(EventStore es, UUID aggregateId) {
         super(es, aggregateId);
-        pullEvents(); // pull relevant events from the EventStore
+        pullEvents(); // pull relevant events from the EventStore <---- OH LOOK!
     }
 
     @EventConsumer
