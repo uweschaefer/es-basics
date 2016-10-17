@@ -31,7 +31,7 @@ public class FooBank7Tests {
     @Autowired
     GoldCustomersView gold;
 
-    @Test
+    @Test(timeout = 3000)
     public void goldCustomerReport() {
         UUID uweId = facade.createAccount("uwe", "schaefer");
         UUID andreasId = facade.createAccount("andreas", "heyder");
@@ -48,19 +48,19 @@ public class FooBank7Tests {
         Collection<String> reportNotYetReady = gold.createGoldCustomerReport();
         assertTrue(reportNotYetReady.isEmpty());
 
-        // eventually (:D) the report has to catch up
-
-        try {
-            // don't do this at home
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-        }
+        // don't do this at home
+        while (gold.createGoldCustomerReport().size() < 2)
+            try {
+                // eventually (:D) the report has to catch up
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+            }
 
         Collection<String> reportUpToDate = gold.createGoldCustomerReport();
 
         assertEquals(2, reportUpToDate.size());
         assertTrue(reportUpToDate.contains("adler, joerg"));
-        assertTrue(reportUpToDate.contains("blum, thorsten"));
+        assertTrue(reportUpToDate.contains("blum, torsten"));
 
     }
 
