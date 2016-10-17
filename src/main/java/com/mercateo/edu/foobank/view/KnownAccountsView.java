@@ -1,5 +1,7 @@
 package com.mercateo.edu.foobank.view;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,8 @@ public class KnownAccountsView extends PullView {
         super(es);
     }
 
-    // TODO add datastructure
+    private final Set<UUID> knownAccounts = new HashSet<>();
+
     // TODO consume Events
 
     public boolean exists(UUID id) {
