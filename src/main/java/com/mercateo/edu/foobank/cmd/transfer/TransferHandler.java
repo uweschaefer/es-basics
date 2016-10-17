@@ -35,7 +35,8 @@ public class TransferHandler extends CommandHandler<TransferCommand> {
 
         return Effects.of(//
                 new TransferSentEvent(t.getFrom(), t.getAmount()), //
-                new TransferReceivedEvent(t.getTo(), t.getAmount()));
+                new TransferReceivedEvent(t.getTo(), t.getAmount()), //
+                new CreditNotificationCommand(t.getTo(), t.getAmount()));
     }
 
     private boolean exists(UUID id) {
