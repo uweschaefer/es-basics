@@ -2,6 +2,7 @@ package com.mercateo.edu.foobank.report;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -19,7 +20,7 @@ public class ValuedCustomerReportView extends PullView {
     // define appropriate Datamodel for aggregation, just a suggestion:
     final Set<UUID> candidates = Sets.newHashSet();
 
-    final Set<UUID> valuedCustomers = Sets.newHashSet();
+    final Set<UUID> valuedCustomers = new HashSet<>();
 
     // TODO create handle method for Events we want to listen to
     // see AccountView how to do that
