@@ -8,7 +8,7 @@
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>eventsourcing-infra</name>
+	<name>es-basics</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
