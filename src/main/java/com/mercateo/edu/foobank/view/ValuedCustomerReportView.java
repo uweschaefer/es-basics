@@ -14,7 +14,6 @@ public class ValuedCustomerReportView extends PullView {
 
     public ValuedCustomerReportView(EventStore es) {
         super(es);
-        pullEvents();
     }
 
     final Set<UUID> candidates = new HashSet<>();
@@ -41,6 +40,7 @@ public class ValuedCustomerReportView extends PullView {
     }
 
     public final Collection<UUID> getValuedCustomers() {
+        pullEvents();
         return Collections.unmodifiableSet(valuedCustomers);
     }
 

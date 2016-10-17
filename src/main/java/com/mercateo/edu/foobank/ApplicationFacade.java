@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 import com.mercateo.edu.foobank.cmd.CreateAccountCommand;
 import com.mercateo.edu.foobank.cmd.DepositCommand;
 import com.mercateo.edu.foobank.cmd.WithdrawCommand;
+import com.mercateo.edu.foobank.cmd.transfer.AccountUnknownException;
+import com.mercateo.edu.foobank.cmd.transfer.TransferCommand;
+import com.mercateo.edu.foobank.cmd.transfer.UnfundedTransferException;
 import com.mercateo.edu.infra.cmd.CommandBus;
 
 import lombok.RequiredArgsConstructor;
@@ -30,6 +33,11 @@ public class ApplicationFacade {
 
     public void withdraw(UUID id, int amount) {
         bus.post(new WithdrawCommand(id, amount));
+    }
+
+    public void transfer(UUID sender, UUID reciever, int amount) throws AccountUnknownException,
+            UnfundedTransferException {
+        bus.post(new TransferCommand(sender, reciever, amount));
     }
 
 }
