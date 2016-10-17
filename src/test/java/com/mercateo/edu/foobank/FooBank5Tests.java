@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -17,6 +18,7 @@ import com.mercateo.edu.infra.EventsourcingInfraConfiguration;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { EventsourcingInfraConfiguration.class,
         FooBankConfiguration.class })
+@DirtiesContext
 public class FooBank5Tests {
 
     @Autowired

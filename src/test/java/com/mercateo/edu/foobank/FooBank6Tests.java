@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -25,6 +26,7 @@ import com.mercateo.edu.infra.EventsourcingInfraConfiguration;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { MockNotificationService.class,
         EventsourcingInfraConfiguration.class, FooBankConfiguration.class })
+@DirtiesContext
 public class FooBank6Tests {
 
     @Autowired
