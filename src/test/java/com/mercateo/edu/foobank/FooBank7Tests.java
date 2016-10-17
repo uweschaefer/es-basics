@@ -31,7 +31,7 @@ public class FooBank7Tests {
     @Autowired
     GoldCustomersView gold;
 
-    @Test
+    @Test(timeout = 3000)
     public void goldCustomerReport() {
         UUID uweId = facade.createAccount("uwe", "schaefer");
         UUID andreasId = facade.createAccount("andreas", "heyder");
