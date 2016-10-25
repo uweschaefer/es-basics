@@ -530,7 +530,7 @@ ____
 ### What just happened?
 
 * Granularity: Events belong to ONE Aggregate
- * we need SendTransfer, RecieveTransfer
+ * we need SendTransfer, ReceiveTransfer
 * Events reveal intent 
  * do not reuse WithdrawnEvent etc, its a different UseCase!
 
@@ -620,7 +620,7 @@ Using AccountView just to find out if an Account exists is wasteful.
 |- |
 | &nbsp;  |
 | As a user, I want to |
-| be notified by email when I recieve a transfer |
+| be notified by email when I receive a transfer |
 | in order to buy champagne asap. |
 
 
