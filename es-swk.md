@@ -149,8 +149,8 @@ CQRS helps with
 ### Cons 
 
 * maybe different angle to modeling
-* (little) more complex than a CRUD System
-* new Challenges like:
+* (a little) more complex than a CRUD System
+* new challenges like:
  * aggregation performance
  * evolving events 
  * capacity 
@@ -162,7 +162,7 @@ proven Patterns for the new challenges ***do*** exist!
 ### Myths
 
 * artificial approach to modeling <span class="fragment" data-fragment-index="1">(**not** true)</span>
-* requires eventual consistent  <span class="fragment" data-fragment-index="2">(**not** true)</span>
+* requires eventual consistency  <span class="fragment" data-fragment-index="2">(**not** true)</span>
 * inherently difficult & complex  <span class="fragment" data-fragment-index="3">(**not** true)</span>
 * bad performance <span class="fragment" data-fragment-index="4">(**not** true)</span>
 
@@ -214,7 +214,7 @@ Hello, we are FooBank !
 
 ### Our Domain
 
-* Local Bank
+* local Bank
 * physical Counter
 * will expand into online-banking
 
@@ -270,7 +270,7 @@ Hello, we are FooBank !
 |- |
 | &nbsp;  |
 | As a Customer |
-| i want to **deposit** cash at the counter |
+| I want to **deposit** cash at the counter |
 | in order to credit it to my account. |
 
 
@@ -280,7 +280,7 @@ Hello, we are FooBank !
 |- |
 | &nbsp;  |
 | As a Customer |
-| i want to **withdraw** money from my account at the counter |
+| I want to **withdraw** money from my account at the counter |
 | in order to cash it out. |
 
 
@@ -298,7 +298,7 @@ Hello, we are FooBank !
  * minimal Events
 * Implement **read** side 
  * minimal EventHandlers (Views)
- * that populate the canonical Domain Model
+ * populate the canonical Domain Model
 
 --
 
@@ -349,7 +349,7 @@ AccountView = EventHandler that aggregates Events to an Account.
 | UseCase ValuedCustomerReport |
 |- |
 | &nbsp;  |
-| As a Manager, i want |
+| As a Manager, I want |
 | a complete report the lists all *valued customers* |
 | in order to free them from handling charges. |
 
@@ -495,7 +495,7 @@ ____
 | UseCase Transfer |
 |- |
 | &nbsp;  |
-| As a user, i want to |
+| As a user, I want to |
 | transfer Money from my account to someone else's |
 | in order to pay my rent online. |
 
@@ -559,7 +559,7 @@ ____
 	}
 
 
-Using AccountView just to find out, if an Account exists is wasteful.
+Using AccountView just to find out if an Account exists is wasteful.
 
 --
 
@@ -619,8 +619,8 @@ Using AccountView just to find out, if an Account exists is wasteful.
 | UseCase Notification |
 |- |
 | &nbsp;  |
-| As a user, i want to |
-| be notified by email when i recieve a transfer |
+| As a user, I want to |
+| be notified by email when I recieve a transfer |
 | in order to buy champagne asap. |
 
 
@@ -694,15 +694,15 @@ Up to now, all views have been *PullView*s, that call *pullEvents()* to stream e
 
 * we have to Query the EventStore in order to know, if View's State is stale
  * the more Queries we run, the more catastrophic this is:
- * bad Latency for Queries
- * high Contention on EventStore
+   * bad Latency for Queries
+   * high Contention on EventStore
 
 --
 
 | UseCase GoldCustomers |
 |- |
 | &nbsp;  |
-| As an accountant, i want to |
+| As an accountant, I want to |
 | know all the Gold-Customers |
 | in order to be extra nice to them. |
 
@@ -711,7 +711,7 @@ Up to now, all views have been *PullView*s, that call *pullEvents()* to stream e
 | Specification Gold Customer |
 |- |
 | &nbsp;  |
-|someone who recieved a transfer **>=10.000€** |
+|someone who received a transfer **>=10.000€** |
 |at least once|
 
 --
@@ -722,7 +722,7 @@ Up to now, all views have been *PullView*s, that call *pullEvents()* to stream e
 * report must be a collection of Strings "&lt;LASTNAME&gt;, &lt;FIRSTNAME&gt;"
 * order is not important 
 * only Transfers count – Depositions **must not** be examined
-* report does not need to include GoldCustomer that recieved the status in the last few seconds...
+* report does not need to include GoldCustomer that received the status in the last few seconds...
 
 --
 
