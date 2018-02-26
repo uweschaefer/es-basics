@@ -52,6 +52,10 @@ public class FooBank6Tests {
         assertEquals(70, uwe.getBalance());
         assertEquals(30, andreas.getBalance());
 
+        try{
+        	Thread.sleep(200); // yes, do not do that at home
+        }catch(InterruptedException e){}
+        
         verify(notification, Mockito.times(1)).sendEmailTo(andreasId, 30);
         verifyNoMoreInteractions(notification);
 
