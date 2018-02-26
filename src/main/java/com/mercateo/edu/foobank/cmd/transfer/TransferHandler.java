@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mercateo.edu.foobank.AccountRepository;
+import com.mercateo.edu.foobank.cmd.NotifyCommand;
 import com.mercateo.edu.foobank.evt.transfer.TransferReceivedEvent;
 import com.mercateo.edu.foobank.evt.transfer.TransferSentEvent;
 import com.mercateo.edu.foobank.view.KnownAccountsView;
@@ -35,7 +36,10 @@ public class TransferHandler extends CommandHandler<TransferCommand> {
 
         return Effects.of(//
                 new TransferSentEvent(t.getFrom(), t.getAmount()), //
-                new TransferReceivedEvent(t.getTo(), t.getAmount()));
+                new TransferReceivedEvent(t.getTo(), t.getAmount()),
+                new NotifyCommand(t.getTo(), t.getAmount())
+        		
+        		);
     }
 
     private boolean exists(UUID id) {
